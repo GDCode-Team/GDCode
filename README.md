@@ -30,7 +30,6 @@ If you find one, please let me know.
 | ------------- | ------------- |
 | Rust >= 1.60.0 | [Site](https://www.rust-lang.org/) |
 | Druid >= 0.7.0 | [Github](https://github.com/linebender/druid) |
-| pest >= 2.2.1 | [Site](https://pest.rs) |
 
 ### Setup
 

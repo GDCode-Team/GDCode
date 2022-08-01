@@ -10,14 +10,12 @@ If you find one, please let me know.
 
 ### Features
 
-- Custom GDScript code parser (Godot 3.5).
 - Syntax highlighting.
 - Code autocomplete.
 - Code formatter
 
 ### Todo
 
-- [ ] Custom GDScript code parser (Godot 3.5)
 - [ ] Syntax highlighting
 - [ ] Code autocomplete
 - [ ] Code formatter

@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/stars/megaredb/GDEditor.svg) ![](https://img.shields.io/github/tag/megaredb/GDEditor.svg) ![](https://img.shields.io/github/release/megaredb/GDEditor.svg) ![](https://img.shields.io/github/issues/megaredb/GDEditor.svg)
 
-**[Readme RU]()**
+**[Readme RU](https://github.com/megaredb/GDEditor/blob/master/README_RU.md)**
 
 #### GDEditor is a code editor developed specifically for GDScript.
 This project is currently under development and may contain bugs.
@@ -22,6 +22,7 @@ If you find one, please let me know.
 - [ ] Code autocomplete
 - [ ] Code formatter
 - [ ] UI
+- [ ] Custom Themes
 
 ### Dependencies
 

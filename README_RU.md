@@ -1,4 +1,4 @@
-# GDEditor
+# GDCode
 
 ![](https://img.shields.io/github/stars/megaredb/GDEditor.svg) ![](https://img.shields.io/github/tag/megaredb/GDEditor.svg) ![](https://img.shields.io/github/release/megaredb/GDEditor.svg) ![](https://img.shields.io/github/issues/megaredb/GDEditor.svg)
 

@@ -4,7 +4,7 @@
 
 **[Readme RU](https://github.com/megaredb/GDEditor/blob/master/README_RU.md)**
 
-#### GDEditor is a code editor developed specifically for GDScript.
+#### GDCode is a code editor developed specifically for GDScript.
 This project is currently under development and may contain bugs.
 If you find one, please let me know.
 
@@ -35,11 +35,11 @@ If you find one, please let me know.
 ### Setup
 
 Installation is easy! Just go to the [releases](https://github.com/megaredb/GDEditor/releases) section.
-You can also build the GDEditor yourself. Install the dependencies, copy the repository to your hard drive and then run the following commands:
+You can also build the GDCode yourself. Install the dependencies, copy the repository to your hard drive and then run the following commands:
 
 ##### Windows
 
 ```powershell
-cd ./GDEditor
+cd ./GDCode
 cargo build
 ```

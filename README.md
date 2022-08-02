@@ -27,7 +27,7 @@ If you find one, please let me know.
 | Name  | Link |
 | ------------- | ------------- |
 | Rust >= 1.60.0 | [Site](https://www.rust-lang.org/) |
-| Druid >= 0.7.0 | [Github](https://github.com/linebender/druid) |
+| Godot >= 3.4 | [Site](https://godotengine.org) |
 
 ### Setup
 

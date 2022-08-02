@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["gdcode-lc", "gdcode-ui"]
+members = ["gdcode-ls", "gdcode-ui"]
 
 [profile.release-lto]
 inherits = "release"

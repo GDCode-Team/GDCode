@@ -16,3 +16,6 @@ opt-level = 3
 
 [profile.fastdev]
 inherits = "dev"
+
+[dependencies]
+gdcode-ui = { path = "./gdcode-ui"}

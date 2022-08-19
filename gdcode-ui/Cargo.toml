@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 druid = { git = "https://github.com/linebender/druid.git" }
-alacritty_terminal = "0.16.1"

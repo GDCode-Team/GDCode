@@ -10,9 +10,9 @@ If you find one, please let me know.
 
 ### Features
 
-- Syntax highlighting.
-- Code autocomplete.
-- Code formatter
+- ~Syntax highlighting.~
+- ~Code autocomplete.~
+- ~Code formatter.~
 
 ### Todo
 

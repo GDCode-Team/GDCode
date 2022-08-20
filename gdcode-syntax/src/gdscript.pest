@@ -1,0 +1,61 @@
+char = { ASCII_ALPHANUMERIC | "."}
+u_char = {
+    !("\"" | "\\") ~ ANY
+    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
+    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+}
+
+identifier = @{char+}
+spaces = _{(" " | "\t")+}
+end_line = {
+	&(spaces? ~ (!ANY | NEWLINE))
+}
+comma = _{spaces? ~ "," ~ spaces?}
+colon = _{spaces? ~ ":" ~ spaces?}
+
+inner_string = @{ (!"\n" ~ u_char)* }
+single_quotes = {"'"}
+double_quotes = {"\""}
+string = ${
+	(single_quotes ~ inner_string ~ single_quotes) |
+    (double_quotes ~ inner_string ~ double_quotes)
+}
+
+triple_sq = {"'''"}
+triple_dq = {"\"\"\""}
+inner_multistring = @{ u_char* }
+multistring = ${
+	(triple_sq ~ inner_multistring ~ triple_sq) |
+    (triple_dq ~ inner_multistring ~ triple_dq)
+}
+
+path = ${"$" ~ (identifier | string)}
+
+extends = {
+	"extends" ~ spaces ~ identifier ~ end_line
+}
+class_name = {
+	"class_name" ~ spaces ~ identifier ~ 
+    (comma ~ path)? ~ end_line
+}
+
+types = {
+	string |
+    multistring
+}
+
+static_type = ${colon ~ identifier}
+var = {
+	"var" ~ spaces ~ identifier ~
+    static_type? ~ spaces? ~
+    ("=" | ":=") ~ spaces? ~ types ~ end_line
+}
+_const = {
+    "const" ~ spaces ~ identifier ~
+    static_type? ~ spaces? ~
+    ("=" | ":=") ~ spaces? ~ types ~ end_line
+}
+
+gdscript = _{
+	SOI ~ (class_name) ~ EOI
+}

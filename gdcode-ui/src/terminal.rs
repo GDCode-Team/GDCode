@@ -1,16 +1,19 @@
 use druid::{
     commands,
     debug_state::DebugState,
+    keyboard_types::KeyState,
     piet::TextLayout as _,
     scroll_component,
     text::{EditableText, ImeInvalidation, Selection, TextComponent, TextStorage},
     theme,
     widget::{LabelText, Padding, Scroll, WidgetWrapper},
-    ArcStr, BoxConstraints, Color, Command, Data, Env, Event, EventCtx, FontDescriptor, HotKey,
+    ArcStr, BoxConstraints, Code, Color, Command, Data, Env, Event, EventCtx, FontDescriptor,
     Insets, KeyEvent, KeyOrValue, LayoutCtx, LifeCycle, LifeCycleCtx, PaintCtx, Point, Rect,
-    RenderContext, Size, SysMods, TextAlignment, TextLayout, TimerToken, UpdateCtx, Vec2, Widget, KbKey,
+    RenderContext, Size, TextAlignment, TextLayout, TimerToken, UpdateCtx, Vec2, Widget,
 };
 use std::time::Duration;
+
+use crate::hotkey::{HotKey, Mods};
 
 const CURSOR_BLINK_DURATION: Duration = Duration::from_millis(500);
 const MAC_OR_LINUX_OR_OBSD: bool = cfg!(any(
@@ -304,21 +307,33 @@ impl<T: TextStorage + EditableText> Terminal<T> {
         let our_id = ctx.widget_id();
 
         match key {
-            key if HotKey::new(SysMods::Cmd, "c").matches(key) => Some(sys::COPY.to(our_id)),
-            key if HotKey::new(SysMods::Cmd, "x").matches(key) => Some(sys::CUT.to(our_id)),
+            key if HotKey::new(Mods::Cmd, Code::KeyC, KeyState::Down).matches(key) => {
+                Some(sys::COPY.to(our_id))
+            }
+            key if HotKey::new(Mods::Cmd, Code::KeyX, KeyState::Down).matches(key) => {
+                Some(sys::CUT.to(our_id))
+            }
             // we have to send paste to the window, in order to get it converted into the `Paste`
             // event
-            key if HotKey::new(SysMods::Cmd, "v").matches(key) => {
+            key if HotKey::new(Mods::Cmd, Code::KeyV, KeyState::Down).matches(key) => {
                 Some(sys::PASTE.to(ctx.window_id()))
             }
-            key if HotKey::new(SysMods::Cmd, "z").matches(key) => Some(sys::UNDO.to(our_id)),
-            key if HotKey::new(SysMods::CmdShift, "Z").matches(key) && !cfg!(windows) => {
+            key if HotKey::new(Mods::Cmd, Code::KeyZ, KeyState::Down).matches(key) => {
+                Some(sys::UNDO.to(our_id))
+            }
+            key if HotKey::new(Mods::CmdShift, Code::KeyZ, KeyState::Down).matches(key)
+                && !cfg!(windows) =>
+            {
                 Some(sys::REDO.to(our_id))
             }
-            key if HotKey::new(SysMods::Cmd, "y").matches(key) && cfg!(windows) => {
+            key if HotKey::new(Mods::Cmd, Code::KeyY, KeyState::Down).matches(key)
+                && cfg!(windows) =>
+            {
                 Some(sys::REDO.to(our_id))
             }
-            key if HotKey::new(SysMods::Cmd, "a").matches(key) => Some(sys::SELECT_ALL.to(our_id)),
+            key if HotKey::new(Mods::Cmd, Code::KeyA, KeyState::Down).matches(key) => {
+                Some(sys::SELECT_ALL.to(our_id))
+            }
             _ => None,
         }
     }

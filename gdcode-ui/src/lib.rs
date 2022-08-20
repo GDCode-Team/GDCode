@@ -1,6 +1,7 @@
 pub use druid::PlatformError;
-use druid::{widget::Flex, AppLauncher, Widget, WidgetExt, WindowDesc};
+use druid::{widget::Flex, AppLauncher, Widget, WindowDesc};
 
+pub mod hotkey;
 pub mod terminal;
 
 pub fn run_app() -> Result<(), PlatformError> {
